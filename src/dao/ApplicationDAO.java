@@ -54,6 +54,35 @@ public class ApplicationDAO {
         }
     }
 
+    public List<Application> findByStudent(int studentId) throws SQLException {
+        return query(BASE + "WHERE a.student_id = ? ORDER BY a.id", studentId, 0);
+    }
+
+    public List<Application> findByCompany(int companyId) throws SQLException {
+        return query(BASE + "WHERE (j.company_id = ? OR i.company_id = ?) ORDER BY a.id", companyId, companyId);
+    }
+
+    public Application findById(int id) throws SQLException {
+        List<Application> list = query(BASE + "WHERE a.id = ?", id, 0);
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    private List<Application> query(String sql, int p1, int p2) throws SQLException {
+        List<Application> list = new ArrayList<>();
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, p1);
+            if (p2 > 0) {
+                ps.setInt(2, p2);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    list.add(mapRow(rs));
+                }
+            }
+        }
+        return list;
+    }
 
     public void updateStatus(int applicationId, String status) throws SQLException {
         String sql = "UPDATE application SET status = ? WHERE id = ?";
