@@ -81,7 +81,13 @@ public class ApplicationService {
         return placementDAO.findInternshipsByCompany(companyId);
     }
 
+    public List<PlacementRecord> getMyPlacements(int studentId) throws SQLException {
+        return placementDAO.findByStudent(studentId);
+    }
 
+    public List<Application> getCompanyApplications(int companyId) throws SQLException {
+    return applicationDAO.findByCompany(companyId);
+}
 
     public void updatePpo(int companyId, int placementId, String ppoStatus) throws SQLException {
         PlacementRecord found = null;
