@@ -52,7 +52,16 @@ public class ApplicationService {
 
     public void changeStatus(int companyId, int applicationId, String status) throws SQLException {
         Application app = null;
-    
+        for (Application a : applicationDAO.findByCompany(companyId)) {
+            if (a.getId() == applicationId) {
+                app = a;
+                break;
+            }
+        }
+        if (app == null) {
+            throw new InvalidInputException("Application not found for your company.");
+        }
+        applicationDAO.updateStatus(applicationId, status);
 
         int priority = status.equals("Rejected") ? 2 : 1;
         notifier.send(app.getStudentId(), "Your application for " + app.getRole() + " at "
