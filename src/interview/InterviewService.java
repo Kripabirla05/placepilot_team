@@ -64,6 +64,17 @@ public class InterviewService {
 
         int score = 0;
         System.out.println("\n--- Result ---");
+        for (int i = 0; i < sheet.length; i++) {
+            boolean correct = sheet[i][0] != null && sheet[i][0].equals(sheet[i][1]);
+            if (correct) {
+                score++;
+            }
+            System.out.println("Q" + (i + 1) + ": your answer = " + sheet[i][0]
+                    + ", correct = " + sheet[i][1] + (correct ? "  [OK]" : "  [WRONG]"));
+        }
+        System.out.println("Score: " + score + "/" + sheet.length + "  (attempted " + attempted + ")");
+        testResultDAO.insert(student.getId(), "MCQ", score, sheet.length);
+        System.out.println("Result saved.");
     }
 
     public void startMock(Student student, String type) throws IOException, SQLException {
