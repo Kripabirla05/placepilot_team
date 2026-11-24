@@ -1,0 +1,4 @@
+Download MySQL Connector/J (Platform Independent -> ZIP) from:
+https://dev.mysql.com/downloads/connector/j/
+Extract it and copy the jar here, then RENAME it to:   mysql-connector-j.jar
+Final path:  PlacePilot/lib/mysql-connector-j.jar
