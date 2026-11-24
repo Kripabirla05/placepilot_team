@@ -64,7 +64,6 @@ public class InterviewService {
 
         int score = 0;
         System.out.println("\n--- Result ---");
-        
     }
 
     public void startMock(Student student, String type) throws IOException, SQLException {
@@ -80,7 +79,32 @@ public class InterviewService {
         int score = 0;
         int total = 0;
         int number = 1;
-       
+        for (Question q : list) {
+            System.out.println("Q" + number++ + ". " + q.getText());
+            String answer = Util.readString("Your answer: ").toLowerCase();
+
+            String[] keywords = q.getKeywords();
+            int found = 0;
+            StringBuilder missing = new StringBuilder();
+            for (String k : keywords) {
+                if (answer.contains(k.trim())) {
+                    found++;
+                } else {
+                    missing.append(k.trim()).append(", ");
+                }
+            }
+            score += found;
+            total += keywords.length;
+            System.out.println("  Keywords matched: " + found + "/" + keywords.length);
+            if (missing.length() > 0) {
+                System.out.println("  You could also mention: " + missing.substring(0, missing.length() - 2));
+            }
+            System.out.println();
+        }
+
+        System.out.println("Interview score: " + score + "/" + total);
+        testResultDAO.insert(student.getId(), "MOCK_" + type, score, total);
+        System.out.println("Result saved.");
     }
 
     private static final String FILE_PATH = "data/questions.csv";
