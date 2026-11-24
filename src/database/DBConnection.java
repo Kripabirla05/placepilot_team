@@ -6,9 +6,15 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/placepilot_db";
-    private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    // Allow each developer to use local credentials without committing passwords.
+    private static final String URL = settingOrDefault("PLACEPILOT_DB_URL", "jdbc:mysql://localhost:3306/placepilot_db");
+    private static final String USER = settingOrDefault("PLACEPILOT_DB_USER", "root");
+    private static final String PASSWORD = settingOrDefault("PLACEPILOT_DB_PASSWORD", "root");
+
+    private static String settingOrDefault(String name, String defaultValue) {
+        String value = System.getenv(name);
+        return value == null || value.trim().isEmpty() ? defaultValue : value.trim();
+    }
 
     static {
         try {
