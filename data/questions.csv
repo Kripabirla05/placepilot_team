@@ -1,0 +1,25 @@
+type,question,optionA,optionB,optionC,optionD,answer
+MCQ,Which keyword is used to inherit a class in Java?,implements,extends,inherits,super,B
+MCQ,Which collection does NOT allow duplicate elements?,ArrayList,LinkedList,HashSet,Vector,C
+MCQ,Which method starts a new thread?,run(),start(),begin(),execute(),B
+MCQ,Which interface is used to sort objects in natural order?,Comparator,Iterator,Comparable,Runnable,C
+MCQ,Which JDBC interface is used to run a parameterized SQL query?,Statement,PreparedStatement,ResultSet,Driver,B
+MCQ,What is the default value of an int variable in a class?,0,null,1,undefined,A
+MCQ,Which SQL command is used to remove rows from a table?,DROP,REMOVE,DELETE,CLEAR,C
+MCQ,Which data structure works on First In First Out?,Stack,Queue,TreeSet,HashMap,B
+MCQ,Which class is mutable in Java?,String,Integer,StringBuilder,Double,C
+MCQ,Which exception is a checked exception?,NullPointerException,ArithmeticException,SQLException,ArrayIndexOutOfBoundsException,C
+MCQ,Which keyword makes a method run by one thread at a time?,static,final,volatile,synchronized,D
+MCQ,Which collection keeps keys in sorted order?,HashMap,TreeMap,LinkedList,HashSet,B
+TECH,What is the difference between an abstract class and an interface?,,,,,abstract;interface;method;implement
+TECH,What is the difference between ArrayList and LinkedList?,,,,,array;linked;insert;access
+TECH,What is the use of PreparedStatement in JDBC?,,,,,sql;parameter;injection;query
+TECH,What is multithreading and why do we use it?,,,,,thread;parallel;time;cpu
+TECH,What is the difference between String and StringBuilder?,,,,,immutable;mutable;memory;change
+TECH,What is exception handling in Java?,,,,,try;catch;error;runtime
+HR,Tell me about yourself.,,,,,student;skills;project;college
+HR,What are your strengths and weaknesses?,,,,,strength;learn;improve;team
+HR,Why should we hire you?,,,,,skills;learn;team;company
+HR,Where do you see yourself in five years?,,,,,grow;learn;career;company
+HR,Tell me about a project you have worked on.,,,,,project;team;problem;learned
+HR,How do you handle pressure or a deadline?,,,,,plan;time;priority;calm
